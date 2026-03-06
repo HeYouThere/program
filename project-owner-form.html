@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Owner · Program Application · Heyouthere</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --burgundy: #8B1538;
+    --burgundy-dark: #6B0F2A;
+    --orange: #ff4932;
+    --beige: #fdf2e2;
+    --beige-dark: #ecd9b8;
+    --ink: #1e1e1e;
+    --ink-mid: #555;
+    --ink-light: #999;
+    --white: #ffffff;
+    --rule: #e5d5c0;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--beige);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--beige);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-back {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-back:hover { color: var(--burgundy); }
+
+  /* PAGE HEADER */
+  .page-header {
+    background: var(--burgundy);
+    padding: 56px 48px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,73,50,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .page-header-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,73,50,0.15);
+    border: 1px solid rgba(255,73,50,0.3);
+    border-radius: 40px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+
+  .page-header h1 span { color: var(--orange); }
+
+  .page-header p {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* FORM BODY */
+  .form-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 48px 80px;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 24px; }
+    .page-header { padding: 48px 24px 56px; }
+    .form-body { padding: 32px 24px 60px; }
+  }
+
+  .section { margin-bottom: 40px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 40px;
+  }
+
+  .field { margin-bottom: 20px; }
+
+  .field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .field-label .optional {
+    font-weight: 400;
+    color: var(--ink-light);
+    font-size: 13px;
+    margin-left: 6px;
+  }
+
+  textarea, select {
+    width: 100%;
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+    box-shadow: var(--shadow);
+  }
+
+  textarea:focus, select:focus { border-color: var(--burgundy); }
+  textarea { min-height: 92px; }
+
+  select {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+  }
+
+  .hint {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    transition: border-color 0.15s;
+  }
+
+  .radio-option:hover { border-color: var(--burgundy); }
+  .radio-option input { accent-color: var(--burgundy); width: 16px; height: 16px; flex-shrink: 0; }
+
+  .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 40px 0;
+  }
+
+  .acceptance-block {
+    background: var(--white);
+    border: 1.5px solid var(--rule);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .acceptance-header {
+    background: var(--burgundy);
+    padding: 20px 24px;
+  }
+
+  .acceptance-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .acceptance-header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  .acceptance-item {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .acceptance-item:last-child { border-bottom: none; }
+
+  .acceptance-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--burgundy);
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+
+  .acceptance-item label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .acceptance-item label strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--burgundy);
+  }
+
+  .notice {
+    background: var(--white);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .submit-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-submit {
+    background: var(--burgundy);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 18px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+  }
+
+  .btn-submit:hover { background: var(--burgundy-dark); }
+
+  .submit-note {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-align: center;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html" class="nav-logo"><img src="./logo.svg" alt="Heyouthere" height="28"></a>
+  <a href="./index.html" class="nav-back">← Back to program page</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-badge">Project Owner Application</div>
+    <h1>Let's find your <span>project partner.</span></h1>
+    <p>This short form helps us understand your project and find the right match. It takes about 5 minutes. We'll review your submission and be in touch within a week.</p>
+  </div>
+</div>
+
+<div class="form-body">
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Your project</div>
+    </div>
+    <p class="section-desc">Tell us what you're building and what kind of help would move the needle right now.</p>
+
+    <div class="field">
+      <label class="field-label">What is your project about? <span class="optional">2–3 sentences</span></label>
+      <textarea placeholder="Describe the core idea, who it's for, and what stage it's at."></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label">What is the single most important thing a project partner could help you with?</label>
+      <textarea placeholder="e.g. Validate the product concept with potential customers, build a working prototype, map out our go-to-market approach..." style="min-height: 80px;"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label">How many hours per week are you realistically expecting this collaboration to require?</label>
+      <select>
+        <option value="" disabled selected>Select a range</option>
+        <option>2–4 hours / week</option>
+        <option>4–8 hours / week</option>
+        <option>8–12 hours / week</option>
+        <option>More than 12 hours / week</option>
+      </select>
+      <p class="hint">Be honest here. Underestimating is the most common source of friction in early collaborations.</p>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Is your project brief ready to share with a candidate?</label>
+      <div class="radio-group">
+        <label class="radio-option"><input type="radio" name="brief" value="yes"> Yes, I have a document or brief I can share</label>
+        <label class="radio-option"><input type="radio" name="brief" value="almost"> Almost, I need a few more days to finalise it</label>
+        <label class="radio-option"><input type="radio" name="brief" value="no"> Not yet, I'd welcome support in shaping it</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">The collaboration you're looking for</div>
+    </div>
+    <p class="section-desc">Help us understand what a successful partnership would look like for you.</p>
+
+    <div class="field">
+      <label class="field-label">What would make this collaboration a genuine success after 6 months?</label>
+      <textarea placeholder="Think beyond deliverables. What would it mean for the project, and for you personally?"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="field-label">What working style works best for you?</label>
+      <div class="radio-group">
+        <label class="radio-option"><input type="radio" name="style" value="async"> Mostly async. I prefer written updates and a flexible rhythm</label>
+        <label class="radio-option"><input type="radio" name="style" value="checkins"> Regular check-ins. A weekly call keeps me on track</label>
+        <label class="radio-option"><input type="radio" name="style" value="flexible"> Flexible. I adapt depending on what the project needs</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">Have you worked with collaborators, co-founders or project partners before? <span class="optional">optional</span></label>
+      <textarea placeholder="Not a qualifying question. Just helps us understand your experience with this kind of relationship." style="min-height: 72px;"></textarea>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="acceptance-block">
+    <div class="acceptance-header">
+      <h2>I'm joining on the following basis</h2>
+      <p>Three things we need to confirm before we match you with a candidate. Please read each one carefully.</p>
+    </div>
+
+    <div class="acceptance-item">
+      <input type="checkbox" id="check1">
+      <label for="check1">
+        <strong>My project is the right fit for this program.</strong>
+        My project is not yet incorporated and has no plans to incorporate in the next 6 months. It is not currently generating revenue. The scope, time commitment and compensation I have described (whether equity, deferred payment or unpaid) are a realistic estimate of the engagement, and the work will be strictly focused on this project.
+      </label>
+    </div>
+
+    <div class="acceptance-item">
+      <input type="checkbox" id="check2">
+      <label for="check2">
+        <strong>My personal situation makes me eligible.</strong>
+        I am currently employed and do not anticipate entering unemployment in the next 6 months. I commit to informing the program immediately if my employment status changes, and I understand that entering unemployment means my participation in the program will stop.
+      </label>
+    </div>
+
+    <div class="acceptance-item">
+      <input type="checkbox" id="check3">
+      <label for="check3">
+        <strong>I understand how the collaboration works.</strong>
+        I will interview the candidate proposed before any commitment is made. The first month is a calibration period for both of us to adjust scope, timing and working relationship. If we proceed, I commit to a 6-month good-faith collaboration. I understand the program collaboration ends automatically if the project incorporates, begins generating revenue, I enter unemployment, or my project partner finds employment. The collaboration may continue privately outside the program.
+      </label>
+    </div>
+  </div>
+
+  <div class="notice">
+    These conditions exist because this program is specifically designed for pre-revenue projects and people in career transition. When either condition no longer applies, the program has done its job. There are no penalties for exiting.
+  </div>
+
+  <div class="submit-area">
+    <button class="btn-submit">Submit my application →</button>
+    <p class="submit-note">We review every application personally. You'll hear from us within 5–7 working days.</p>
+  </div>
+
+</div>
+</body>
+</html>
