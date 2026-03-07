@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Accelerator Program · For Project Owners · Heyouthere</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --burgundy: #8B1538;
+  --burgundy-dark: #6B0F2A;
+  --orange: #ff4932;
+  --beige: #fdf2e2;
+  --beige-mid: #f5e8d0;
+  --beige-dark: #ecd9b8;
+  --ink: #1e1e1e;
+  --ink-mid: #555;
+  --ink-light: #999;
+  --white: #ffffff;
+  --rule: #e5d5c0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--beige);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--beige);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav-logo .logo-dark { color: var(--burgundy); }
+.nav-logo .logo-orange { color: var(--orange); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.nav-back {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-back:hover { color: var(--burgundy); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--burgundy); }
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+}
+
+.nav-back:hover { color: var(--burgundy); }
+
+.nav-cta {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.nav-cta:hover { opacity: 0.85; }
+
+/* HERO */
+.hero {
+  background: var(--beige);
+  padding: 88px 48px 104px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* topographic line texture */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cpath d='M-50 150 Q200 80 400 160 Q600 240 850 140' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.4'/%3E%3Cpath d='M-50 200 Q150 130 350 210 Q550 290 850 190' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.4'/%3E%3Cpath d='M-50 250 Q180 180 380 260 Q580 340 850 240' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.35'/%3E%3Cpath d='M-50 300 Q200 230 400 310 Q600 390 850 290' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.35'/%3E%3Cpath d='M-50 350 Q170 280 370 360 Q570 440 850 340' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M-50 400 Q190 330 390 410 Q590 490 850 390' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M-50 100 Q220 30 420 110 Q620 190 850 90' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.3'/%3E%3Cpath d='M-50 450 Q160 380 360 460 Q560 540 850 440' fill='none' stroke='%23c8b89a' stroke-width='1.2' opacity='0.25'/%3E%3C/svg%3E");
+  background-size: cover;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(139,21,56,0.08);
+  border: 1px solid rgba(139,21,56,0.2);
+  border-radius: 40px;
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 32px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--burgundy);
+}
+
+.hero h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(36px, 5.5vw, 60px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.hero h1 .orange { color: var(--orange); }
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0 auto 44px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 18px 38px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  display: inline-block;
+}
+
+.btn-primary:hover { opacity: 0.82; }
+
+.hero-anchor {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.hero-anchor:hover { color: var(--ink); }
+
+/* SECTION SHELL */
+section {
+  padding: 80px 48px;
+}
+
+.inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.section-lead {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 48px;
+}
+
+/* HOW IT WORKS */
+#how-it-works { background: var(--white); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 48px;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: var(--beige-dark);
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.step-dot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--beige);
+  border: 2px solid var(--beige-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--burgundy);
+  transition: all 0.2s;
+}
+
+.step:hover .step-dot {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--white);
+}
+
+.step-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.step-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(232,119,34,0.1);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* BENEFITS */
+#benefits { background: var(--beige); }
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .steps::before { display: none; }
+}
+
+.benefit-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.benefit-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.benefit-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(139,21,56,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--burgundy);
+}
+
+.benefit-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.benefit-body {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+/* ELIGIBILITY */
+#who { background: var(--white); }
+
+.eligibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .eligibility-grid { grid-template-columns: 1fr; }
+}
+
+.elig-box {
+  background: var(--beige);
+  border-radius: var(--radius);
+  padding: 28px;
+  border: 1px solid var(--rule);
+}
+
+.elig-box.not { background: #f8f6f4; }
+
+.elig-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.elig-box.good .elig-label { color: #2d7a4f; }
+.elig-box.not  .elig-label { color: var(--orange); }
+
+.elig-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.elig-box.good .elig-label::before { background: #2d7a4f; }
+.elig-box.not  .elig-label::before { background: var(--orange); }
+
+.elig-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.elig-list li {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.elig-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  top: 2px;
+}
+
+.elig-box.good .elig-list li::before { color: #2d7a4f; }
+.elig-box.not  .elig-list li::before { content: '✕'; color: var(--orange); }
+
+/* RULES */
+#rules { background: var(--burgundy); }
+#rules .section-eyebrow { color: var(--orange); }
+#rules .section-title { color: var(--white); }
+#rules .section-lead { color: rgba(255,255,255,0.65); }
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .rules-grid { grid-template-columns: 1fr; }
+}
+
+.rule-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: background 0.2s;
+}
+
+.rule-card:hover { background: rgba(255,255,255,0.13); }
+
+.rule-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--orange);
+  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+}
+
+.rule-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.rule-body {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+}
+
+/* FAQ */
+#faq { background: var(--beige); }
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 24px;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.15s;
+}
+
+.faq-q:hover { background: #fdf9f6; }
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(139,21,56,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s, background 0.2s;
+  color: var(--burgundy);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--burgundy);
+  color: var(--white);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 24px;
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  border-top: 1px solid transparent;
+}
+
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding: 20px 24px 20px;
+  border-top-color: var(--rule);
+}
+
+.cta-strip {
+  background: var(--ink);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.cta-strip h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.cta-strip p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 36px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.btn-cta-orange {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 18px 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.15s;
+}
+
+.btn-cta-orange:hover { opacity: 0.88; }
+
+.cta-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+}
+
+.cta-note a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  section { padding: 60px 24px; }
+  .hero { padding: 60px 24px 80px; }
+  nav { padding: 0 24px; }
+  .cta-strip { padding: 60px 24px; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge  { animation: fadeUp 0.45s ease both; }
+.hero h1     { animation: fadeUp 0.45s 0.08s ease both; }
+.hero-sub    { animation: fadeUp 0.45s 0.16s ease both; }
+.hero-actions{ animation: fadeUp 0.45s 0.24s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://www.heyouthere.com" class="nav-logo"><img src="./logo.svg" alt="Heyouthere" height="28" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'font-weight:800;color:#8B1538;font-size:16px;\'>heyouthere</span>'"></a>
+  <div class="nav-links">
+    <a href="#how-it-works">The process</a>
+    <a href="#benefits">Why join</a>
+    <a href="#who">Eligibility</a>
+    <a href="#rules">How we work</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <a href="mailto:hello@heyouthere.com" class="nav-back">Contact</a>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Heyouthere · Project Accelerator Program · For Project Owners</div>
+    <h1><span class="orange">Bring a skilled partner</span><br>into your early-stage project.</h1>
+    <p class="hero-sub">We match professionals in career transition with project owners who need real, hands-on help. You get a motivated collaborator. They get meaningful work. The program supports both of you throughout.</p>
+    <div class="hero-actions">
+      <a href="project-owner-form.html" class="btn-primary">Apply for free</a>
+      <a href="#how-it-works" class="hero-anchor">See how it works ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="inner">
+    <div class="section-eyebrow">The process</div>
+    <h2 class="section-title">From application to collaboration in four steps.</h2>
+    <p class="section-lead">The program is designed to reduce friction on both sides. We do the matching work. You focus on the project.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-title">You apply</div>
+        <div class="step-desc">Submit your project and describe the kind of help you're looking for.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-title">We connect</div>
+        <div class="step-desc">We review your application and schedule a short call to learn about your project and walk you through how the program works.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-title">We send you candidates</div>
+        <div class="step-desc">We propose up to three candidates whose skills fit your project. You meet them and decide who to move forward with.</div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-title">You sign and start</div>
+        <div class="step-desc">Once you find your partner, both parties sign a collaboration agreement. The first month is used to align on working rhythm before the collaboration hits full stride.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="inner">
+    <div class="section-eyebrow">What you get</div>
+    <h2 class="section-title">Why project owners join the program.</h2>
+    <p class="section-lead">This is not a freelancer marketplace or a volunteering scheme. It is a structured collaboration program with support built in for both parties.</p>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div class="benefit-title">Curated matching, not a search</div>
+        <div class="benefit-body">We review your project and identify candidates whose skills and availability genuinely fit. You receive a shortlist, not a pile of applications.</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="benefit-title">Your partner is supported throughout</div>
+        <div class="benefit-body">Project contributors receive regular project check-ins, coaching and access to professional development training. A supported collaborator stays focused, engaged and brings more to the work.</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="benefit-title">A signed agreement from the start</div>
+        <div class="benefit-body">Both parties sign a collaboration agreement before the work begins. Scope, time commitment and expectations are set in writing. There is nothing informal or ambiguous about the arrangement.</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="benefit-title">A first month to find your stride</div>
+        <div class="benefit-body">The first month is structured to let both parties settle into the working relationship. Scope and rhythm can be fine-tuned before the full collaboration hits its pace. The commitment is real from day one.</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="benefit-title">Work that actually moves the project</div>
+        <div class="benefit-body">Your collaborator is matched to a specific need your project has right now. The work is defined, scoped and expected to produce real output — not a learning exercise, not a simulation, not goodwill tasks.</div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="benefit-title">Motivated, engaged partners</div>
+        <div class="benefit-body">The professionals who join this program are choosing to work on your project specifically. They are not passive candidates. They are invested in making the collaboration meaningful.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section id="who">
+  <div class="inner">
+    <div class="section-eyebrow">Eligibility</div>
+    <h2 class="section-title">Is this program right for your project?</h2>
+    <p class="section-lead">The program is deliberately focused. These criteria exist to protect the experience for both project owners and their collaborators.</p>
+
+    <div class="eligibility-grid">
+      <div class="elig-box good">
+        <div class="elig-label">This program is for you if</div>
+        <ul class="elig-list">
+          <li>Your project is early-stage and not yet a registered company</li>
+          <li>You are not planning to incorporate in the next six months</li>
+          <li>Your project is not yet generating revenue</li>
+          <li>You are not currently receiving unemployment benefits</li>
+          <li>You have a clear (or developing) scope for the collaboration</li>
+          <li>You are ready to invest real time into the partnership</li>
+        </ul>
+      </div>
+      <div class="elig-box not">
+        <div class="elig-label">This program is not for you if</div>
+        <ul class="elig-list">
+          <li>Your company is already incorporated or close to it</li>
+          <li>You need support for an existing business activity</li>
+          <li>You are currently receiving unemployment benefits</li>
+          <li>You are looking for a paid freelancer, contractor or employee</li>
+          <li>Your project is already generating revenue</li>
+          <li>You need someone to execute a fixed deliverable with no relationship</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules">
+  <div class="inner">
+    <div class="section-eyebrow">How we work together</div>
+    <h2 class="section-title">The rules of engagement.</h2>
+    <p class="section-lead">We keep these simple and transparent. They exist to make the collaboration fair, clear and sustainable for everyone involved.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-number">01</div>
+        <div class="rule-title">The project scope is fixed</div>
+        <div class="rule-body">Your project partner works exclusively on the project you submitted. The collaboration cannot extend to other activities or an existing business.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-number">02</div>
+        <div class="rule-title">You interview before committing</div>
+        <div class="rule-body">We propose up to three candidates whose profile fits your project. You interview them and decide whether to move forward. There is no obligation to accept any of them.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-number">03</div>
+        <div class="rule-title">The first month is for alignment</div>
+        <div class="rule-body">Both parties use the first month to settle into the working relationship. Scope, hours and working rhythm can be adjusted if reality differs from the initial brief. The commitment is already in place.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-number">04</div>
+        <div class="rule-title">Good faith is the operating principle</div>
+        <div class="rule-body">The six-month collaboration framework runs on mutual good faith. Both parties are expected to communicate openly and address issues proactively.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-number">05</div>
+        <div class="rule-title">Incorporation ends the program collaboration</div>
+        <div class="rule-body">If your project becomes a registered company or begins generating revenue, the program collaboration stops automatically. You must inform us as soon as that process begins.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-number">06</div>
+        <div class="rule-title">Employment status matters</div>
+        <div class="rule-body">If you enter unemployment, your participation stops. Please inform us immediately if your situation changes. The same applies if your project partner finds employment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="inner">
+    <div class="section-eyebrow">Frequently asked</div>
+    <h2 class="section-title">Questions project owners ask.</h2>
+    <p class="section-lead">If your question is not here, reach out directly. We review every inquiry personally.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this free for project owners?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Yes. Participating in the program as a project owner is free. Any compensation you offer your project partner (whether equity, deferred payment or unpaid) is a matter between you and your collaborator, and must be declared upfront as part of your application.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does the matching process take?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">We review applications within 5 to 7 working days. If your project is a good fit, we will come back to you with a proposed candidate within 2 to 4 weeks. The timeline depends on the specificity of your needs and the current pool of available candidates.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if the match is not right?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Before the interview, there is no obligation. You decide whether to accept the proposed candidate. Once you proceed with a match, both parties sign a collaboration agreement and the program begins in earnest. A decision to stop after that point ends the program for both parties — there is no second match. We ask that any such decision be based on real, substantive reasons, not early discomfort or minor misalignment that could be addressed directly. We ask for honest feedback in all cases so we can improve the process.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I offer equity instead of payment?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Yes. Equity and deferred compensation are both accepted. The key requirement is that the compensation is realistic relative to the time and scope being asked of the project partner, and that it is declared clearly in your application.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens when my project partner finds a job?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">The program stops at that point. The program exists to support people through career transition — when they find employment, it has done its job. You and your project partner may still choose to continue working together privately outside the program.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What support does my project partner receive from the program?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-a">Project contributors receive access to professional development trainings, regular check-ins and coaching. This means you are not their only source of direction and feedback, which benefits the collaboration.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip" id="apply">
+  <h2>Ready to find your project partner?</h2>
+  <p>Applications take about 5 minutes. We review each one personally and come back to you within a week.</p>
+  <a href="project-owner-form.html" class="btn-cta-orange">Apply for free</a>
+  <p class="cta-note">Have a question first? <a href="/cdn-cgi/l/email-protection#d3bbb6bfbfbc93bbb6aabca6a7bbb6a1b6fdb0bcbe">Get in touch.</a></p>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>
